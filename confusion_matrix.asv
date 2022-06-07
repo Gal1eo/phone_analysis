@@ -1,0 +1,24 @@
+phones=importdata("/Volumes/zijianf/phones.txt");
+mat=load("/Volumes/zijianf/mat_noise.txt");
+cor=load("/Volumes/zijianf/cor_noise.txt");
+%total=load("/Volumes/zijianf/total.txt");
+d_matrix=mat+diag(cor);
+%norm_mtr=d_matrix./total;
+%sTable = array2table(d_matrix,'RowNames',phones,...
+%    'VariableNames',phones);
+%figure(1);
+%heatmap(phones,phones,norm_mtr);
+
+figure(1)
+%d_matrix=load("/Volumes/zijianf/test.txt");
+norm_mtr=d_matrix./sum(d_matrix,2);
+heatmap(phones,phones,norm_mtr);
+
+
+mat=load("/Volumes/zijianf/1.txt");
+cor=load("/Volumes/zijianf/cor.txt");
+
+d_matrix=mat+diag(cor);
+norm_mtr=d_matrix./sum(d_matrix,2);
+figure(2)
+heatmap(phones,phones,norm_mtr);
